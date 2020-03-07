@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         minimap
+// @name         minimaP_P
 // @namespace    http://tampermonkey.net/
-// @version      0.g
+// @version      0.пофек
 // @description  try to take over the world!
 // @author       You
 // @match        https://fuckyouarkeros.fun/
