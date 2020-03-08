@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         minimaP_P
+// @name         minimap
 // @namespace    http://tampermonkey.net/
-// @version      0.пофек
+// @version      0.g
 // @description  try to take over the world!
 // @author       You
 // @match        https://fuckyouarkeros.fun/
@@ -12,7 +12,7 @@
 Number.prototype.between = function(a, b) {return this > a && this < b};
 
 var range = 25;
-window.baseTepmlateUrl = 'https://raw.githubusercontent.com/RonyRam/minikarta/master/';
+window.baseTepmlateUrl = 'https://raw.githubusercontent.com/RonyRam/miniMapPlanet/master/';
 
 setTimeout(init, 3000);
 
@@ -144,14 +144,17 @@ function init() {
             var coorDOM = document.getElementsByClassName("coorbox");
     coorDOM = coorDOM[0];
     var coordsXY = coorDOM.innerHTML.split(/(-\d+|\d+)/);
-           var X = coordsXY[1];
-           var Y = coordsXY[3];
-           coordsXY = [X, ,Y];
-          //console.log(coordsXY);
+          // var X = coordsXY[1];
+          // var Y = coordsXY[3];
+          // coordsXY = [X, Y];
+          console.log(coordsXY);
 
-            x_new = +(coordsXY[0].substring(2) + coordsXY[1]);
-            y_new = +(coordsXY[2].substring(3) + coordsXY[3]);
-            //console.log({x_new,y_new});
+            var x_new ="x";
+            var y_new ="y";
+
+           x_new = +(coordsXY[0].substring(2) + coordsXY[1]);
+           y_new = +(coordsXY[2].substring(3) + coordsXY[3]);
+            console.log({x_new,y_new});
 
             if (x != x_new || y != y_new) {
                 x = parseInt(x_new);
@@ -161,7 +164,9 @@ function init() {
                     y_window = y;
                 } else drawCursor();
 
+
                 loadTemplates();
+                consolelog("loadTemplates();");
 
                 //EN
                 for(let name in template_list){
@@ -192,8 +197,8 @@ function init() {
         setMeny()
         };
         function updateloop() {
+         console.log("Updating Template List");
 
-            console.log("Updating Template List");
             // Get JSON of available templates
             var xmlhttp = new XMLHttpRequest();
             var url = window.baseTepmlateUrl + "templates/data.json?" + new Date().getTime();
@@ -292,8 +297,8 @@ function init() {
                     continue
                 if (!y_window.between(temp_y - range * 1, temp_yb + range * 1))
                     continue
-                //console.log("Template " + template + " is in range!");
-                //console.log(x_window, y_window);
+                console.log("Template " + template + " is in range!");
+                console.log(x_window, y_window);
                 needed_templates.push(template);
             }
             if (needed_templates.length == 0) {
