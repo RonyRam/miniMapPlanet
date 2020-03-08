@@ -51,16 +51,16 @@ function init() {
     var div = document.createElement('div');
     div.setAttribute('class', 'post block bc2');
     div.innerHTML = '<style>.grecaptcha-badge{display: none;}</style> <div id="minimapbg" style="position: absolute; background: #080808; box-shadow: 0 0 15px 11px black; right: 0px; top: 0px;">' + '<div class="posy" id="posyt" style = color: rgb(250, 250, 250); background-color:#080808; text-align: center; line-height: 42px; vertical-align: middle; width: auto; height: auto; border-radius: 21px; padding: 6px;">' +
-        '<div id="minimap-text" style="display: none;"></div>' +
+        '<div id="minimap-text" style="display: none; color: #dbdbdb;"></div>' +
         '<div id="minimap-box" style="position: relative;width:420px;height:300px">' +
         '<canvas id="minimap" style="width: 100%; height: 100%;z-index:1;position:absolute;top:0;left:0;"></canvas>' +
         '<canvas id="minimap-board" style="width: 100%; height: 100%;z-index:2;position:absolute;top:0;left:0;"></canvas>' +
         '<canvas id="minimap-cursor" style="width: 100%; height: 100%;z-index:3;position:absolute;top:0;left:0;"></canvas>' +
         '</div><div id="minimap-config" style="line-height:20px;  background-color:#080808;">' +
-        '<span id="hide-map" style="cursor:pointer;">Ne?uou' +
-        '</span> | <span id="follow-mouse" style="cursor:pointer;"Follow mous' +
-        '</span> | Zoom: <span id="zoom-plus" style="cursor:pointer;font-weight:bold;">+</span> / ' +
-        '<span id="zoom-minus" style="cursor:pointer;font-weight:bold;">-</span>' +
+        '<span id="hide-map" style="cursor:pointer; color: #dbdbdb;">скрыть |' +
+        '</span>  <span id="follow-mouse" style="cursor:pointer; color: #dbdbdb;"Follow mous' +
+        '</span> | Zoom: <span id="zoom-plus" style="cursor:pointer; color: #dbdbdb; font-weight:bold;">+</span> / ' +
+        '<span id="zoom-minus" style="cursor:pointer; color: #dbdbdb; font-weight:bold;">-</span>' +
         ' | | ' +
         '<span id="setMod" style="cursor:pointer;font-weight:bold" ;="" <="" span="">...</span>' +
         ' <div id="meny0" style="display: none; background: #080808;"> ...</div>' +
@@ -95,7 +95,7 @@ function init() {
 
     document.getElementById("hide-map").onclick = function() {
         console.log("This should do something, but it doesn 't");
-            toggle_show = false; document.getElementById("minimap-box").style.display = "none"; document.getElementById("minimap-config").style.display = "none"; document.getElementById("minimap-text").style.display = "block"; document.getElementById("minimap-text").innerHTML = "Iieacaou"; document.getElementById("minimap-text").style.cursor = "pointer";
+            toggle_show = false; document.getElementById("minimap-box").style.display = "none"; document.getElementById("minimap-config").style.display = "none"; document.getElementById("minimap-text").style.display = "block"; document.getElementById("minimap-text").innerHTML = "миникарта"; document.getElementById("minimap-text").style.cursor = "pointer";
         };
         document.getElementById("minimap-text").onclick = function() {
             toggle_show = true;
