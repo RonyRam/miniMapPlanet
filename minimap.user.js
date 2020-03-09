@@ -1,10 +1,11 @@
 // ==UserScript==
 // @name         minimaP_P
 // @namespace    http://tampermonkey.net/
-// @version      0.1
-// @description  try to take over the world!
-// @author       Pony 
-// @match        https://fuckyouarkeros.fun/
+// @version      0.2
+// @description  ...
+// @author       Pony
+// @include      *://pixelplanet.fun/*
+// @include      *://fuckyouarkeros.fun/*
 // @grant        none
 // ==/UserScript==
 
@@ -13,6 +14,21 @@ Number.prototype.between = function(a, b) {return this > a && this < b};
 
 var range = 25;
 window.baseTepmlateUrl = 'https://raw.githubusercontent.com/RonyRam/miniMapPlanet/master/';
+
+    setInterval(adap, 700);
+    function adap() {
+    var widthscreen = document.body.clientWidth;
+
+      let weg =  widthscreen / 3;
+        if (weg<=300){
+        document.getElementById ('minimap-box').style.height =  weg + 'px';
+        document.getElementById ('minimap-box').style.width =  weg+80 + 'px';
+    } else{
+        document.getElementById ('minimap-box').style.height =  300 + 'px';
+        document.getElementById ('minimap-box').style.width =  480 + 'px';
+    }
+
+    }
 
 setTimeout(init, 3000);
 
@@ -52,9 +68,9 @@ function init() {
     div.setAttribute('class', 'post block bc2');
     div.innerHTML = '<style>.grecaptcha-badge{display: none;}</style> <div id="minimapbg" style="position: absolute; background: #080808; box-shadow: 0 0 15px 11px black; right: 0px; top: 0px;">' + '<div class="posy" id="posyt" style = color: rgb(250, 250, 250); background-color:#080808; text-align: center; line-height: 42px; vertical-align: middle; width: auto; height: auto; border-radius: 21px; padding: 6px;">' +
         '<div id="minimap-text" style="display: none; color: #dbdbdb;"></div>' +
-        '<div id="minimap-box" style="position: relative;width:420px;height:300px">' +
+        '<div id="minimap-box" style="position: relative;width:420px;height:300px;">' +
         '<canvas id="minimap" style="width: 100%; height: 100%;z-index:1;position:absolute;top:0;left:0;"></canvas>' +
-        '<canvas id="minimap-board" style="width: 100%; height: 100%;z-index:2;position:absolute;top:0;left:0;"></canvas>' +
+        '<canvas id="minimap-board" style=" display: none; width: 100%; height: 100%;z-index:2;position:absolute;top:0;left:0;"></canvas>' +
         '<canvas id="minimap-cursor" style="width: 100%; height: 100%;z-index:3;position:absolute;top:0;left:0;"></canvas>' +
         '</div><div id="minimap-config" style="line-height:20px;  background-color:#080808;">' +
         '<span id="hide-map" style="cursor:pointer; color: #dbdbdb;">скрыть |' +
@@ -66,6 +82,7 @@ function init() {
         ' <div id="meny0" style="display: none; background: #080808;"> ...</div>' +
         '</div>' +
         '</div>';
+
 
 
 
@@ -105,6 +122,9 @@ function init() {
             document.getElementById("minimap-text").style.cursor = "default";
             loadTemplates();
         };
+
+
+
         document.getElementById("zoom-plus").addEventListener('mousedown', function(e) {
             e.preventDefault();
             zooming_in = true;
@@ -144,17 +164,14 @@ function init() {
             var coorDOM = document.getElementsByClassName("coorbox");
     coorDOM = coorDOM[0];
     var coordsXY = coorDOM.innerHTML.split(/(-\d+|\d+)/);
-          // var X = coordsXY[1];
-          // var Y = coordsXY[3];
-          // coordsXY = [X, Y];
-          console.log(coordsXY);
+         // console.log(coordsXY);
 
             var x_new ="x";
             var y_new ="y";
 
            x_new = +(coordsXY[0].substring(2) + coordsXY[1]);
            y_new = +(coordsXY[2].substring(3) + coordsXY[3]);
-            console.log({x_new,y_new});
+            //console.log({x_new,y_new});
 
             if (x != x_new || y != y_new) {
                 x = parseInt(x_new);
@@ -166,7 +183,6 @@ function init() {
 
 
                 loadTemplates();
-                consolelog("loadTemplates();");
 
                 //EN
                 for(let name in template_list){
@@ -298,7 +314,7 @@ function init() {
                 if (!y_window.between(temp_y - range * 1, temp_yb + range * 1))
                     continue
                 console.log("Template " + template + " is in range!");
-                console.log(x_window, y_window);
+               // console.log(x_window, y_window);
                 needed_templates.push(template);
             }
             if (needed_templates.length == 0) {
@@ -438,6 +454,8 @@ function init() {
             });*/
             coorDOM = document.getElementById("coords");
         }
+
+
 
         function setMeny() {
             console.log("set");
